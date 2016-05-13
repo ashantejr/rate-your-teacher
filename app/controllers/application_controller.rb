@@ -20,23 +20,23 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/' do
-    @tweets = Tweet.all
+    @ratings = Rating.all
     @users = User.all
     erb :index
   end
 
-  get '/tweet' do
+  get '/rating' do
     if session[:user_id] #returns nil if there isn't one
-      erb :tweet
+      erb :rating
     else
       redirect "/login"
     end
   end
 
-  post '/tweet' do
+  post '/rating' do
     user = User.find_by(:id => session[:user_id])
-    tweet = Tweet.new(:user => user, :status => params[:status])
-    tweet.save
+    rating = Rating.new(:user => user, :status => params[:status])
+    rating.save
     redirect '/'
   end
 
@@ -69,19 +69,19 @@ class ApplicationController < Sinatra::Base
      end
   end
 
-  get '/tweet' do
-    erb :tweet
+  get '/rating' do
+    erb :rating
     if session[:user_id] #returns nil if there isn't one
-      erb :tweet
+      erb :rating
     else
       redirect "/login"
     end
   end
   
-  post '/tweet' do
+  post '/rating' do
     user = User.find_by(:id => session[:user_id])
-    tweet = Tweet.new(:user => user, :status => params[:status])
-    tweet.save
+    rating = Rating.new(:user => user, :status => params[:status])
+    ratings.save
     redirect '/'
   end
 

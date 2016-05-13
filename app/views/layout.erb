@@ -1,0 +1,49 @@
+<head>
+  <link href="/css/bootstrap.css" rel="stylesheet">
+  <link href="/css/style.css" rel="stylesheet">
+  <title>Fwitter</title>
+</head>
+
+<body>
+  <div class="container match">
+    <nav class="navba">
+      <ul class="match">
+        <% if logged_in? %>
+        <li style="color:white" class="h3">Welcome, <%= current_user.username %></li>
+        <div class="btn-group h1" role="group" aria-label="...">
+          
+          <li class="text-center">
+            <a href="/tweet" style="text-align:center">
+              <button class="btn btn-default navbar-btn btn btn-primary btn-lg" type="button">Post a Tweet!
+              </button>
+            </a>
+            <a href="/logout" style="text-align:center">
+              <button class="btn btn-default navbar-btn btn btn-primary btn-lg" type="button">Logout
+              </button>
+            </a>
+          </li>
+        </div>
+        
+      <% else %>
+        
+        <div class="btn-group h1" role="group" aria-label="...">
+          <li class="text-center">
+            <a href="/login">
+              <button class="btn btn-default navbar-btn btn btn-primary btn-lg" type="button">Login
+              </button>
+            </a>
+            <a href="/signup">
+              <button class="btn btn-default navbar-btn btn btn-primary btn-lg" type="button">Sign Up
+              </button>
+            </a>
+          </li>
+          
+        </div>
+        <% end %>
+      </ul>
+    </nav>
+    <div class="container">
+      <h1>Welcome to Fwitter!</h1><%= yield %>
+    </div>
+  </div>
+</body>
